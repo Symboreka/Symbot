@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python3.7
 # Discord bot for the SymboArmy Server, creatively named SymBot
 print('Starting SymBot')
 import discord, asyncio, io, random
