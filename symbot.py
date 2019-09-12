@@ -6,6 +6,9 @@ from utils_symbot import Commandmanager
 version = str('Too Young')
 adminid = 117038989248036870
 
+#reading token from file
+token = open(token).read()
+
 client = discord.Client()
 mngr = Commandmanager()
 
@@ -236,10 +239,7 @@ async def on_message(message):
 async def on_member_join(member):
     await client.send_message(member.server, "Welcome " + member + " to SymboArmy! Have a wonderful time here! :heart_eyes:")
 
-
-#experimental token NDE1OTQ3MjY0ODg0ODY3MDc0.DW9UnA.f_R4IUWj1vTmsCA-TxV-w33LU1I
-#     NDA4OTE0ODkxMTkwMDQyNjM0.DeJXiA.TRBlClHMyT8UDY_mvztDDmWksLk
 #   self.makeitwork()
-client.run("4uQanbFuVxNIuUeFOveJqK7n7N_HpZk9")
+client.run(token)
 
 print('\nSymbot Ended')
