@@ -8,7 +8,7 @@ adminid = 117038989248036870
 
 #reading token from file
 token = open("token").read()
-
+print(token)
 client = discord.Client()
 mngr = Commandmanager()
 
