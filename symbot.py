@@ -21,7 +21,7 @@ authpos = 7
 @client.event
 async def on_ready():
 
-    print('Logged in as ' + client.user.name + ' with ID: ' + client.user.id)
+    print('Logged in as ' + client.user.name + ' with ID: ' + str(client.user.id))
     #set default playing game in presence
     await client.change_presence(game=discord.Game(name="with fire >:)"))
 @client.event
