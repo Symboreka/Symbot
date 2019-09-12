@@ -240,6 +240,6 @@ async def on_member_join(member):
 #experimental token NDE1OTQ3MjY0ODg0ODY3MDc0.DW9UnA.f_R4IUWj1vTmsCA-TxV-w33LU1I
 #     NDA4OTE0ODkxMTkwMDQyNjM0.DeJXiA.TRBlClHMyT8UDY_mvztDDmWksLk
 #   self.makeitwork()
-client.run("NDA4OTE0ODkxMTkwMDQyNjM0.DeJXiA.TRBlClHMyT8UDY_mvztDDmWksLk")
+client.run("4uQanbFuVxNIuUeFOveJqK7n7N_HpZk9")
 #chkrthrd.keepRunning = False Gone because didnt work
 print('\nSymbot Ended')
