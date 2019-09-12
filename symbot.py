@@ -7,7 +7,7 @@ version = str('Too Young')
 adminid = 117038989248036870
 
 #reading token from file
-token = open("token.txt").read()
+token = open("/home/pi/Symbot/token.txt").read()
 client = discord.Client()
 mngr = Commandmanager()
 
