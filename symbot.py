@@ -73,26 +73,26 @@ async def on_message(message):
         ''', inline="False")
 
         embed.set_footer(text="there are also some hidden thingys like stream insiders but hey, you'll do just fine, promise sweetheart")
-        await client.send_message(message.channel, embed=embed)
+        await message.channel.send( embed=embed)
         satisfied=True
 
 
     #command to test if symbot works
     if content.startswith('>symbot'):
-        await client.send_message(message.channel, "I'm here and working as intended!")
+        await message.channel.send( "I'm here and working as intended!")
         satisfied = True
 
     if content.startswith('>version'):
-        await client.send_message(message.channel, "I'm running at Version: "+ str(version))
+        await message.channel.send( "I'm running at Version: "+ str(version))
         satisfied = True
 
     #coinflip, 50/50 chance
     if content.startswith('>coin'):
         choice = random.randint(1,2)
         if choice == 1:
-            await client.send_message(message.channel, "Head!")
+            await message.channel.send( "Head!")
         else:
-            await client.send_message(message.channel, "Tail!")
+            await message.channel.send( "Tail!")
         satisfied = True
 
 
@@ -101,7 +101,7 @@ async def on_message(message):
     if content.startswith('>setgame') and message.author.id == str(adminid):
         game = message.content[9:]
         await client.change_presence(game=discord.Game(name=game))
-        await client.send_message(message.channel, "Changed game to " + game)
+        await message.channel.send( "Changed game to " + game)
 
         satisfied = True
     #giving user info
@@ -128,7 +128,7 @@ async def on_message(message):
             embed.add_field(name="Role " + str(idx + 1) + " : ", value=roles[idx].name)
 
         embed.set_footer(text="ideas for more info to show? tell me.")
-        await client.send_message(message.channel, embed=embed)
+        await message.channel.send( embed=embed)
 
 
         satisfied = True
@@ -136,31 +136,31 @@ async def on_message(message):
     if content.startswith('>command_expire_date'):
         ask = message.content[21:]
         if ask == '':
-            await client.send_message(message.channel, 'Soooooooo, you want to ask for an expire date of what? - Oh! I know, your milk is expired since 1978.')
+            await message.channel.send( 'Soooooooo, you want to ask for an expire date of what? - Oh! I know, your milk is expired since 1978.')
         elif ask[0] == '>' and len(ask) > 1:
             out = mngr.get_expire_date(ask)
             if out == None:
-                await client.send_message(message.channel, 'Command you entered does not exist, or has no expire date. Unlike the milk in your fridge, drink it. ')
+                await message.channel.send( 'Command you entered does not exist, or has no expire date. Unlike the milk in your fridge, drink it. ')
             else:
                 # out will return in seconds, parsing to human readable here
 
                 if out // (60*60*24) > 1:
                     n = int(out //(60*60*24))
                     #n will be in  Days
-                    await client.send_message(message.channel, str(n) + ' Days until ' + ask + ' expires')
+                    await message.channel.send( str(n) + ' Days until ' + ask + ' expires')
                 elif out //(60*60) > 1:
                     n = int(out //(60*60))
                     # n will be in hours
-                    await client.send_message(message.channel, str(n) + ' Hours until ' + ask + ' expires')
+                    await message.channel.send( str(n) + ' Hours until ' + ask + ' expires')
                 elif out // 60 > 1:
                     n = int(out //60)
                     #n will be in minutes
-                    await client.send_message(message.channel, str(n) + ' Minutes until ' + ask + ' expires')
+                    await message.channel.send( str(n) + ' Minutes until ' + ask + ' expires')
                 else:
                     #using out instead of n because out is already in seconds
-                    await client.send_message(message.channel, str(out) + ' Seconds until ' + ask + ' expires')
+                    await message.channel.send( str(out) + ' Seconds until ' + ask + ' expires')
         else:
-            await client.send_message(message.channel, 'Please enter a valid command (including the ">")')
+            await message.channel.send( 'Please enter a valid command (including the ">")')
 
         satisfied = True
 
@@ -169,26 +169,26 @@ async def on_message(message):
     if content.startswith('>save_commands'):
         if message.author.id == str(adminid):
             mngr.save_state()
-            await client.send_message(message.channel, 'Commands have been saved!')
+            await message.channel.send( 'Commands have been saved!')
         else:
-            await client.send_message(message.channel, 'Only Admins can save commands!')
+            await message.channel.send( 'Only Admins can save commands!')
         satisfied = True
 
     if content.startswith('>read_commands'):
         if message.author.id == str(adminid):
             commands = mngr.read_dynamic_commands()
             if commands != None:
-                await client.send_message(message.channel, str(commands) + " commands initialized")
+                await message.channel.send( str(commands) + " commands initialized")
             else:
-                await client.send_message(message.channel, 'No commands found!')
+                await message.channel.send( 'No commands found!')
         satisfied = True
 
     if message.content.startswith('>read_perm_commands'):
         out = mngr.read_perm_commands()
         if out > 0:
-            await client.send_message(message.channel, str(out) + ' commands have been initialized' )
+            await message.channel.send( str(out) + ' commands have been initialized' )
         else:
-            await client.send_message(message.channel, 'Could not initialize commands')
+            await message.channel.send( 'Could not initialize commands')
         satisfied = True
 
     #woah meme
@@ -206,25 +206,25 @@ async def on_message(message):
             split = full_command.split(' ', 1)
             try:
                 if split[0] == '':
-                    await client.send_message(message.channel, 'I did what you wanted, which is nothing! Yay! :yum:')
+                    await message.channel.send( 'I did what you wanted, which is nothing! Yay! :yum:')
                 else:
                     if split[1] == '' or split[0][0] != '>':
-                        await client.send_message(message.channel, 'You fool! (syntax should be: >addcommand >*Commandname* *CommandText*)')
+                        await message.channel.send( 'You fool! (syntax should be: >addcommand >*Commandname* *CommandText*)')
                     else:
                         if split[1][0] == '>':
-                            await client.send_message(message.channel, '*Snaps you on your fingers* :   No tailpicking!!! :rage:')
+                            await message.channel.send( '*Snaps you on your fingers* :   No tailpicking!!! :rage:')
                         else:
                             name = split[0]
                             content = split[1]
                             check = mngr.add_dynamic_command(name.lower(), content)
                             if check == 1:
-                                await client.send_message(message.channel, 'Command has been added!')
+                                await message.channel.send( 'Command has been added!')
                             else:
-                                await client.send_message(message.channel, 'Something went wrong!! Does the command already exist?')
+                                await message.channel.send( 'Something went wrong!! Does the command already exist?')
             except:
-                await client.send_message(message.channel, 'You fool! (syntax should be: >addcommand >*Commandname* *CommandText*)')
+                await message.channel.send( 'You fool! (syntax should be: >addcommand >*Commandname* *CommandText*)')
         else:
-            await client.send_message(message.channel, "No touchy dis command!! (you need to be Level5 or higher to use this)")
+            await message.channel.send( "No touchy dis command!! (you need to be Level5 or higher to use this)")
         satisfied = True
 
 
@@ -232,7 +232,7 @@ async def on_message(message):
     if satisfied != True and message.content.startswith('>') == True:
         if content != ">":
             ctx = mngr.run_command(content)
-            await client.send_message(message.channel, ctx)
+            await message.channel.send( ctx)
 
 @client.event
 async def on_member_join(member):
