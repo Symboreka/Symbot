@@ -241,5 +241,5 @@ async def on_member_join(member):
 #     NDA4OTE0ODkxMTkwMDQyNjM0.DeJXiA.TRBlClHMyT8UDY_mvztDDmWksLk
 #   self.makeitwork()
 client.run("4uQanbFuVxNIuUeFOveJqK7n7N_HpZk9")
-#chkrthrd.keepRunning = False Gone because didnt work
+
 print('\nSymbot Ended')
