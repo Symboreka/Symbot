@@ -7,7 +7,7 @@ version = str('Too Young')
 adminid = 117038989248036870
 
 #reading token from file
-token = open(token).read()
+token = open("token").read()
 
 client = discord.Client()
 mngr = Commandmanager()
