@@ -114,14 +114,14 @@ async def on_message(message):
         acccreatedate = user.created_at.strftime("%d.%m.%Y %H:%M:%S")
 
         #getting the date where user joined Server
-        for member in message.server.members:
+        for member in message.guild.members:
             if member == message.author:
                 mbr = member
         joinedat = member.joined_at.strftime("%d.%m.%Y %H:%M:%S")
         embed = discord.Embed(title="Info of " + user.name, description="------------", color=0x00ff00)
 
         embed.add_field(name="Account creation date:", value=str(acccreatedate), inline="False")
-        embed.add_field(name="Joined "+ str(message.server) + " at:", value=joinedat, inline="False")
+        embed.add_field(name="Joined "+ str(message.guild) + " at:", value=joinedat, inline="False")
         embed.add_field(name="Progress: ", value="Consists of following roles:", inline="False")
         #adding roles, 1 field for each role
         for idx, role in enumerate(roles):
@@ -236,7 +236,7 @@ async def on_message(message):
 
 @client.event
 async def on_member_join(member):
-    await client.send_message(member.server, "Welcome " + member + " to SymboArmy! Have a wonderful time here! :heart_eyes:")
+    await client.send_message(member.guild, "Welcome " + member + " to SymboArmy! Have a wonderful time here! :heart_eyes:")
 
 #   self.makeitwork()
 client.run(token)
