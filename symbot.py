@@ -117,7 +117,7 @@ async def on_message(message):
         for member in message.guild.members:
             if member == message.author:
                 mbr = member
-        joinedat = member.joined_at.strftime("%d.%m.%Y %H:%M:%S")
+        joinedat = mbr.joined_at.strftime("%d.%m.%Y %H:%M:%S")
         embed = discord.Embed(title="Info of " + user.name, description="------------", color=0x00ff00)
 
         embed.add_field(name="Account creation date:", value=str(acccreatedate), inline="False")
