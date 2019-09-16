@@ -173,7 +173,8 @@ async def on_message(message):
         satisfied = True
 
     if content.startswith('>read_commands'):
-        if message.author.id == str(adminid):
+        if str(message.author.id) == str(adminid):
+            print(str(message.author.id))
             commands = mngr.read_dynamic_commands()
             if commands != None:
                 await message.channel.send( str(commands) + " commands initialized")
