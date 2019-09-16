@@ -17,10 +17,6 @@ mngr = Commandmanager()
 #required rights to create commands
 authpos = 7
 
-async def send_message(channel, content):
-    await channel.send_message(content)
-
-
 @client.event
 async def on_ready():
     print('Logged in as ' + client.user.name + ' with ID: ' + str(client.user.id))
@@ -82,7 +78,6 @@ async def on_message(message):
     #command to test if symbot works
     if content.startswith('>symbot'):
         await message.channel.send( "I'm here and working as intended!")
-        send_message(message.channel, "i'm here and working as intended!")
         satisfied = True
 
     if content.startswith('>version'):
