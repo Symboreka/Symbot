@@ -180,7 +180,7 @@ async def on_message(message):
             else:
                 await message.channel.send( 'No commands found!')
         else:
-            message.channel.send("You do not have permissions to do that!")
+            await message.channel.send("You do not have permissions to do that!")
         satisfied = True
 
     if message.content.startswith('>read_perm_commands'):
