@@ -3,7 +3,7 @@
 print('Starting SymBot')
 import discord, asyncio, io, random
 from utils_symbot import Commandmanager
-version = str('Too Young')
+version = str('Too Young (0.1)')
 adminid = 117038989248036870
 
 #reading token from file
@@ -17,10 +17,12 @@ mngr = Commandmanager()
 #required rights to create commands
 authpos = 7
 
+def send_message(channel, content):
+    await channel.send_message(content)
+
 
 @client.event
 async def on_ready():
-
     print('Logged in as ' + client.user.name + ' with ID: ' + str(client.user.id))
     #set default playing game in presence
     await client.change_presence(activity=discord.Game(name="with fire >:)"))
@@ -80,6 +82,7 @@ async def on_message(message):
     #command to test if symbot works
     if content.startswith('>symbot'):
         await message.channel.send( "I'm here and working as intended!")
+        send_message(message.channel, "i'm here and working as intended!")
         satisfied = True
 
     if content.startswith('>version'):
