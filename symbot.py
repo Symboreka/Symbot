@@ -17,7 +17,7 @@ mngr = Commandmanager()
 #required rights to create commands
 authpos = 7
 
-def send_message(channel, content):
+async def send_message(channel, content):
     await channel.send_message(content)
 
 
