@@ -174,7 +174,6 @@ async def on_message(message):
 
     if content.startswith('>read_commands'):
         if str(message.author.id) == str(adminid):
-            print(str(message.author.id))
             commands = mngr.read_dynamic_commands()
             if commands != None:
                 await message.channel.send( str(commands) + " commands initialized")
@@ -185,11 +184,14 @@ async def on_message(message):
         satisfied = True
 
     if message.content.startswith('>read_perm_commands'):
-        out = mngr.read_perm_commands()
-        if type(out) is int and out > 0:
-            await message.channel.send( str(out) + ' commands have been initialized' )
+        if str(message.author.id) == str(adminid):
+            out = mngr.read_perm_commands()
+            if type(out) is int and out > 0:
+                await message.channel.send( str(out) + ' commands have been initialized' )
+            else:
+                await message.channel.send( 'Could not initialize commands')
         else:
-            await message.channel.send( 'Could not initialize commands')
+            await message.channel.send("You do not have permissions to do that!")
         satisfied = True
 
     #woah meme
