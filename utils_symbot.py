@@ -128,7 +128,6 @@ class Commandmanager:
             return n
 
     def save_dynamic_commands(self):
-
         pass
 
 
@@ -171,4 +170,4 @@ class Commandmanager:
                 if check == 1:
                     n = n+1
             cmds.close()
-            return
+            return n
