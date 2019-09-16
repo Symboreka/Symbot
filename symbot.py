@@ -186,7 +186,7 @@ async def on_message(message):
 
     if message.content.startswith('>read_perm_commands'):
         out = mngr.read_perm_commands()
-        if type(out) is int && out > 0:
+        if type(out) is int and out > 0:
             await message.channel.send( str(out) + ' commands have been initialized' )
         else:
             await message.channel.send( 'Could not initialize commands')
