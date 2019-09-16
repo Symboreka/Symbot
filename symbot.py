@@ -197,7 +197,6 @@ async def on_message(message):
     #woah meme
     if content.startswith('>woah'):
         await message.channel.send(None, file=discord.File('img/woah.png', 'woah.png'))
-        img.close()
         satisfied=True
 
 
