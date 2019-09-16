@@ -196,8 +196,7 @@ async def on_message(message):
 
     #woah meme
     if content.startswith('>woah'):
-        img = open('/home/pi/symbot/img/woah.jpeg', mode='rb')
-        await client.send_file(message.channel, img)
+        await message.channel.send(None, file=discord.File('img/woah.png', 'woah.png'))
         img.close()
         satisfied=True
 
